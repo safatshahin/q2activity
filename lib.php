@@ -42,3 +42,25 @@ function get_question_ids(array $rawrequest): array {
 
     return $ids;
 }
+
+/**
+ * Retrieves a list of all activities from a course's context
+ *
+ * @param object $coursecontext The course context that will be used to generate a list of activities
+ * @return array The activities that have been retrieved
+ * 
+ * Note: get_array_of_activities(stdclass $course, bool $usecache = false) might be able to replace this entirely. Test.
+ */
+function get_used_activities($coursecontext): array {
+    $plugins = [];
+    $moduleinfo = get_fast_modinfo($coursecontext);
+    
+    foreach($moduleinfo->get_used_module_names() as $pluginname => $readablename){
+
+        array_push($plugins, $pluginname);
+    }
+
+
+
+
+}
