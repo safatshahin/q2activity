@@ -25,7 +25,12 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+
+
 defined('MOODLE_INTERNAL') || die();
+
+
+require_once(__DIR__ . '/../../../config.php');
 
 /**
  * Question - add question fragment callback.
@@ -37,8 +42,22 @@ function qbank_q2activity_output_fragment_add_question(array $args): string {
 
     global $PAGE;
 
-    // Displaydata contains html fragments which are rendered by the output renderer utilising the moustache template.
-    $displaydata['question'] = "<h4>Modal triggered from question id: {$args['questionid']}</h4>";
+
+    $questionids = [$args['questionid']];
+    $requestdata = $args['rawrequest'];
+
+    parse_str($requestdata, $requestarray);
+
+    if ($questionids[0] == -1){
+        $questionids = [1,2,3];
+    }
+    $outputstring = '<h4>Modal triggered from: ';
+
+    foreach ($questionids as $id) {
+        $outputstring = $outputstring . "Question {$id}. ";
+    }
+
+    $displaydata['question'] = $outputstring . "</h4>";
 
     return $PAGE->get_renderer('qbank_q2activity')->render_q2activity_fragment($displaydata);
 

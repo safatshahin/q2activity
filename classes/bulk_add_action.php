@@ -16,6 +16,7 @@
 
 namespace qbank_q2activity;
 
+
 /**
  * Class for 'Add to Quiz' bulk action.
  *
@@ -51,7 +52,17 @@ class bulk_add_action extends \core_question\local\bank\bulk_action_base {
      * @return moodle_url URL
      */
     public function get_bulk_action_url(): \moodle_url {
-        return new \moodle_url('/question/bank/q2activity/addtoactivity.php');
+        global $PAGE;
+
+        $target = $this->get_bulk_action_key();
+        $datatarget = '[name="' . $target . '"]';
+
+
+
+        $PAGE->requires->js_call_amd('qbank_q2activity/q2activity', 'init', [$datatarget, json_encode($_REQUEST)]);
+
+        return new \moodle_url('#');
+        #return new \moodle_url('/question/bank/q2activity/addtoactivity.php');
     }
 
     /**

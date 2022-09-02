@@ -76,7 +76,7 @@ class add_action_column extends action_column_base implements menuable_action {
         $target = 'q2activityquestion_' . $question->id;
         $datatarget = '[data-target="' . $target . '"]';
 
-        $PAGE->requires->js_call_amd('qbank_q2activity/q2activity', 'init', [$datatarget, $question->contextid]);
+        $PAGE->requires->js_call_amd('qbank_q2activity/q2activity', 'init', [$datatarget, json_encode($_REQUEST), $question->contextid]);
 
         $params = [
             'data-target' => $target,

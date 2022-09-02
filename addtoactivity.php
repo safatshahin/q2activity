@@ -61,6 +61,6 @@ if (array_key_exists('questionid', $rawrequestdata)) {
         echo '<p>' . $val . '</p>';
     }
 }
-
+echo json_encode($_REQUEST);
 // Show the footer.
 echo $OUTPUT->footer();
