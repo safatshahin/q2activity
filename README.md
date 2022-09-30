@@ -7,7 +7,7 @@ Question2Activity (q2activity) is a plugin for the Moodle LMS that extends the f
 
 ## Installation Instructions
 _Follow these steps to install Question2Activity:_
-1. Download the plugin to the ___{moodle install directory}/question/bank/___ directory as a new folder called ___q2activity__. This can be done in either of the following ways:
+1. Download the plugin to the ___{moodle install directory}/question/bank/___ directory as a new folder called ___q2activity___. This can be done in either of the following ways:
     - With Git from within the _/question/bank_ directory, running the following command: 
         ```
         git clone https://github.com/3ark91/q2activity.git q2activity
